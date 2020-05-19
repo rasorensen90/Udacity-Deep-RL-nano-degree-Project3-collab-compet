@@ -50,4 +50,4 @@ In the last code cell of the notebook, you'll learn how to design and observe an
 ### (Optional) Build your Own Environment
 For this project, we have built the Unity environment for you, and you must use the environment files that we have provided.
 
-If you are interested in learning to build your own Unity environments after completing the project, you are encouraged to follow the instructions here, which walk you through all of the details of building an environment from a Unity scene.
+If you are interested in learning to build your own Unity environments after completing the project, you are encouraged to follow the instructions [here](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Getting-Started-with-Balance-Ball.md), which walk you through all of the details of building an environment from a Unity scene.
