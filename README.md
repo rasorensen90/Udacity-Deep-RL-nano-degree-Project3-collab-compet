@@ -43,8 +43,7 @@ Then, place the file in the p3_collab-compet/ folder in the DRLND GitHub reposit
 ### Step 3: Explore the Environment
 After you have followed the instructions above, open Tennis.ipynb (located in the p3_collab-compet/ folder in the DRLND GitHub repository) and follow the instructions to learn how to use the Python API to control the agent.
 
-Watch the (silent) video below to see what kind of output to expect from the notebook, if everything is working properly!
-
+Watch this (silent) [video](https://youtu.be/kxDvrkg8ep0) to see what kind of output to expect from the notebook, if everything is working properly!
 
 In the last code cell of the notebook, you'll learn how to design and observe an agent that always selects random actions at each timestep. Your goal in this project is to create an agent that performs much better!
 
