@@ -2,7 +2,7 @@
 Project 3 of the Udacity Deep RL Nano Degree program
 
 ## The Environment
-For this project, you will work with the Tennis environment.
+For this project, you will work with the [Tennis](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Learning-Environment-Examples.md#tennis) environment. 
 
 ![Unity ML-Agents Tennis Environment](images/tennis.png "Unity ML-Agents Tennis Environment")
 
