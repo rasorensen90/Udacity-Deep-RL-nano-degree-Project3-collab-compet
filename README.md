@@ -47,7 +47,7 @@ Watch this (silent) [video](https://youtu.be/kxDvrkg8ep0) to see what kind of ou
 
 In the last code cell of the notebook, you'll learn how to design and observe an agent that always selects random actions at each timestep. Your goal in this project is to create an agent that performs much better!
 
-(Optional) Build your Own Environment
+### (Optional) Build your Own Environment
 For this project, we have built the Unity environment for you, and you must use the environment files that we have provided.
 
 If you are interested in learning to build your own Unity environments after completing the project, you are encouraged to follow the instructions here, which walk you through all of the details of building an environment from a Unity scene.
