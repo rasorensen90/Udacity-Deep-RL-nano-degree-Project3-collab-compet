@@ -30,6 +30,7 @@ The network architecture roughly consists of three dense layers with batchnormal
 ## Result
 The results from running this implementation is seen in the figure below. The environment was solved in 697 episodes.
 ![Results](images/results.png "Results")
+
 The blue line shows the max score of the episode obtained by both agents, while the orange line shows the average max score for both agents over the last 100 episodes. The environment is considered solved when the average over the last 100 episodes is above 0.5.
 
 ## Possible future work
