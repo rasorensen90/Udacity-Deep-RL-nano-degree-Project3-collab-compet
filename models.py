@@ -14,7 +14,6 @@ class Actor(nn.Module):
         self.fc1 = nn.Linear(state_size, fc1_units)
         self.bn1 = nn.BatchNorm1d(fc1_units)
         self.fc2 = nn.Linear(fc1_units, fc2_units)
-        self.bn2 = nn.BatchNorm1d(fc2_units)
         self.fc3 = nn.Linear(fc2_units, action_size)
         self.reset_parameters()
 
@@ -27,8 +26,8 @@ class Actor(nn.Module):
         if state.dim() == 1:
             state = torch.unsqueeze(state, 0)
 
-        x = self.bn1(F.relu(self.fc1(state)))
-        x = self.bn2(F.relu(self.fc2(x)))
+        x = self.bn1(F.leaky_relu(self.fc1(state)))
+        x = F.leaky_relu(self.fc2(x))
         return torch.tanh(self.fc3(x))
 
 
@@ -50,6 +49,6 @@ class Critic(nn.Module):
         if state.dim() == 1:
             state = torch.unsqueeze(state, 0)
 
-        x = self.bn1(F.relu(self.fc1(state)))
-        x = F.relu(self.fc2(torch.cat((x, action), dim=1)))
+        x = self.bn1(F.leaky_relu(self.fc1(state)))
+        x = F.leaky_relu(self.fc2(torch.cat((x, action), dim=1)))
         return self.fc3(x)
