@@ -24,7 +24,7 @@ mu = 0.0                # Ornstein-Uhlenbeck noise mean
 sigma = 0.1             # Ornstein-Uhlenbeck noise std
 ```
 ## Architecture
-The network architecture roughly consists of three dense layers with batchnormalization on the first two layers in the actor and on the first layer in the critic.
+The network architecture roughly consists of three dense layers with batchnormalization on the first layer.
 ![Architectures](images/architectures.png "Architectures")
 
 ## Result
