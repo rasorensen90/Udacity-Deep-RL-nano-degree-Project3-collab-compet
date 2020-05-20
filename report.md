@@ -18,8 +18,8 @@ BATCH_SIZE = 128        # minibatch size
 GAMMA = 0.99            # discount factor
 target_mix = 3e-3       # for soft update of target parameters
 LR_ACTOR = 1e-3         # learning rate of the actor 
-LR_CRITIC = 1e-4        # learning rate of the critic
-theta = 0.15            # Ornstein-Uhlenbeck noise parameter
+LR_CRITIC = 2e-3        # learning rate of the critic
+theta = 0.25            # Ornstein-Uhlenbeck noise parameter
 mu = 0.0                # Ornstein-Uhlenbeck noise mean
 sigma = 0.1             # Ornstein-Uhlenbeck noise std
 ```
@@ -28,7 +28,7 @@ The network architecture roughly consists of three dense layers with batchnormal
 ![Architectures](images/architectures.png "Architectures")
 
 ## Result
-The results from running this implementation is seen in the figure below. The environment was solved in XX episodes.
+The results from running this implementation is seen in the figure below. The environment was solved in 697 episodes.
 ![Results](images/results.png "Results")
 The blue line shows the max score of the episode obtained by both agents, while the orange line shows the average max score for both agents over the last 100 episodes. The environment is considered solved when the average over the last 100 episodes is above 0.5.
 
