@@ -17,8 +17,8 @@ class SelfPlayAgent:
         self.noises = [config.noise_fn() for _ in range(self.config.num_agents)]
         self.replay = config.replay_fn()
 
-        hard_update(self.target_actor, self.online_actor)
-        hard_update(self.target_critic, self.online_critic)
+        hard_update(self.target_actor, self.online_actor) # initialize to be equal
+        hard_update(self.target_critic, self.online_critic) # initialize to be equal
     
     
 
@@ -44,24 +44,23 @@ class SelfPlayAgent:
             self.learn()
 
     def learn(self):
-        # Sample a batch of transitions from the replay buffer
+        # Sample a batch from the replay buffer
         transitions = self.replay.sample()
         states, full_state, actions, rewards, next_states, next_full_state, dones = transpose_to_tensor(transitions, self.config.device)
 
-        # Update online critic model
+        ### Update online critic model ###
         # Compute actions for next states with the target actor model
-        with torch.no_grad():
+        with torch.no_grad(): # don't use gradients for target
             target_next_actions = [self.target_actor(next_states[:, i, :]) for i in range(self.config.num_agents)]
 
         target_next_actions = torch.cat(target_next_actions, dim=1)
 
         # Compute Q values for the next states and next actions with the target critic model
-        with torch.no_grad():
+        with torch.no_grad(): # don't use gradients for target
             target_next_qs = self.target_critic(next_full_state.to(self.config.device), target_next_actions.to(self.config.device))
 
-        # Compute Q values for the current states and actions with the Bellman equation
-        target_qs = rewards.sum(1, keepdim=True)
-        target_qs += self.config.discount * target_next_qs * (1 - dones.max(1, keepdim=True)[0])
+        # Compute Q values for the current states and actions
+        target_qs = rewards.sum(1, keepdim=True) + self.config.discount * target_next_qs * (1 - dones.max(1, keepdim=True)[0])
 
         # Compute Q values for the current states and actions with the online critic model
         actions = actions.view(actions.shape[0], -1)
@@ -74,7 +73,7 @@ class SelfPlayAgent:
         torch.nn.utils.clip_grad_norm_(self.online_critic.parameters(), 1)
         self.online_critic_opt.step()
 
-        # Update online actor model
+        ### Update online actor model ###
         # Compute actions for the current states with the online actor model
         online_actions = [self.online_actor(states[:, i, :]) for i in range(self.config.num_agents)]
         online_actions = torch.cat(online_actions, dim=1)
@@ -85,6 +84,6 @@ class SelfPlayAgent:
         online_actor_loss.backward()
         self.online_actor_opt.step()
 
-        # Update target critic and actor models
+        ### Update target critic and actor models ###
         soft_update(self.target_actor, self.online_actor, self.config.target_mix)
         soft_update(self.target_critic, self.online_critic, self.config.target_mix)
