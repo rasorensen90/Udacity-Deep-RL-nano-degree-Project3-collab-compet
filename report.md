@@ -34,6 +34,8 @@ sigma = 0.1             # Ornstein-Uhlenbeck noise std
 The network architecture roughly consists of three dense layers with batchnormalization on the first layer.
 ![Architectures](images/architectures.png "Architectures")
 This dense architecture is simple and is a good match for the observation space. This is because the observation contains spacially independent values, as opposed to an image, where a convolutional neural network would have been better. 
+As seen in the image, the input is three times larger than the environment proclaimed, this is because the observation consists of three stacked frames from the environment.
+The Critic uses both agents observation space, and therefore has a larger input size.
 
 ## Result
 The results from running this implementation is seen in the figure below. The environment was solved in 697 episodes.
