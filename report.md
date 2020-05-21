@@ -44,4 +44,4 @@ The blue line shows the max score of the episode obtained by both agents, while 
 ## Possible future work
 * Hyperparameter optimization. Only a few runs have been made to find the used hyperparameters. A more thorough search might optimize the performance. 
 * Try the more reasent version of DDPG, namely the [D4PG](https://arxiv.org/pdf/1804.08617.pdf) algorithm. 
-* Try out Prioritized Experience Replay, as this might increase the speed in which the model learns.
+* Try out Prioritized Experience Replay, as this might increase the speed in which the model converges.
